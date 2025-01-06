@@ -1,4 +1,19 @@
 # Samsung-RISCV
+The program is centered around the RISC-V architecture and leverages open-source tools to provide hands-on learning in VLSI chip design and RISC-V concepts. The internship is guided by the esteemed instructor, Mr. Kunal Ghosh.
+
+## Profile Overview
+
+Name: G S Monish Yadav
+
+College: Vidyavardhaka College of Engineering
+
+Email ID: monishyadav@zohomail.in
+
+GitHub Profile: monu112004
+
+LinkedIn Profile: www.linkedin.com/in/g-s-monish-yadav-23262b266
+
+Task 1: Review lab videos on C programming and RISC-V architecture. Perform the task of compiling C code using both the GCC compiler and the RISC-V compiler, demonstrating an understanding of the compilation process for each.
 
 ## C and RISC-V Based Labs
 
