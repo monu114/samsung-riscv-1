@@ -13,7 +13,9 @@ GitHub Profile: monu112004
 
 LinkedIn Profile: www.linkedin.com/in/g-s-monish-yadav-23262b266
 
-Task 1: Review lab videos on C programming and RISC-V architecture. Perform the task of compiling C code using both the GCC compiler and the RISC-V compiler, demonstrating an understanding of the compilation process for each.
+<details>
+<summary><b>Task 1:</b> Task 1: Review lab videos on C programming and RISC-V architecture. Perform the task of compiling C code using both the GCC compiler and the RISC-V compiler, demonstrating an understanding of the compilation process for each.simulator</summary>   
+<br>
 
 ## C and RISC-V Based Labs
 
@@ -62,6 +64,52 @@ riscv64-unknown-elf-objdump -d sum_1ton.o
 3. -O1: Enables basic optimization for better performance without significantly increasing compilation time.
 
 4. riscv64-unknown-elf-objdump: A tool for disassembling RISC-V binaries to examine the code structure and debug it effectively.
+</details>
 
+<details>   
+<summary><b>Task 2:</b> Task is to refer to C based and RISCV based lab videos and execute the task of compiling the C code using gcc and riscv compiler simulator</summary>   
+<br>
+   
+#  RISC-V ISA Simulation with SPIKE and Proxy Kernel (pk)
+This repository provides instructions for setting up and using SPIKE, a RISC-V ISA simulator, along with the Proxy Kernel (pk) for program execution. Follow the steps below to install the necessary tools, run simulations, and debug RISC-V programs effectively.
 
+##  What is SPIKE?
+SPIKE is an open-source RISC-V ISA simulator written in C++. It emulates a RISC-V core and cache system, enabling developers to test RISC-V programs without hardware. SPIKE supports running standalone programs as well as operating systems like Linux
+
+## Testing the SPIKE Simulator
+To validate the setup, compile and execute a sample program (sum_1ton.c) using both the GCC and RISC-V compilers.
+### Using GCC Compiler:
+``` sh
+gcc product.c  
+./a.out
+```
+![VirtualBox_vsdworkshop_13_01_2025_20_43_22](https://github.com/user-attachments/assets/e20f695b-6839-42d1-9f3f-7835fb7b8d7f)
+
+### Using RISC-V Compiler:
+``` sh
+spike pk product.o
+```
+## Analyzing the Assembly Code
+### Objdump Analysis:
+Generate the assembly code with the following command:
+``` sh
+riscv64-unknown-elf-objdump -d sum_1ton.o | less
+```
+![VirtualBox_vsdworkshop_13_01_2025_20_43_47](https://github.com/user-attachments/assets/04a7db80-2d33-42ed-bafd-77a29c09d413)
+
+### Debugging with SPIKE:
+1. Open the debugger using the command:
+``` sh
+spike -d pk product.o
+```
+2. Perform debugging operations in the terminal.
+   
+## Optimization Levels
+Snapshots of RISC-V objdump at different optimization levels (-O1 and -Ofast) provide insights into how compiler optimizations affect the generated assembly code. Use these options during compilation to analyze the differences:
+
+-O1 Optimization
+
+-Ofast Optimization
+
+![VirtualBox_vsdworkshop_13_01_2025_20_42_05](https://github.com/user-attachments/assets/68908728-8b0a-405b-8b9c-19f3cc09741b) 
 
