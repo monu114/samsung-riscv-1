@@ -70,7 +70,7 @@ riscv64-unknown-elf-objdump -d sum_1ton.o
 <summary><b>Task 2:</b> Task is to refer to C based and RISCV based lab videos and execute the task of compiling the C code using gcc and riscv compiler simulator</summary>   
 <br>
    
-#  RISC-V ISA Simulation with SPIKE and Proxy Kernel (pk)
+#  RISC-V ISA Simulation with SPIKE
 This repository provides instructions for setting up and using SPIKE, a RISC-V ISA simulator, along with the Proxy Kernel (pk) for program execution. Follow the steps below to install the necessary tools, run simulations, and debug RISC-V programs effectively.
 
 ##  What is SPIKE?
