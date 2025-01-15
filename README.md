@@ -314,8 +314,4 @@ J-type (Jump-type) instructions implement jump operations, often used for loops.
 ![j type](https://github.com/user-attachments/assets/5dbe1d45-4357-4816-bd3f-9b7f74c9d31a)
 
 ---
-
-
-
-
-
+</details>
