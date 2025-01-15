@@ -116,6 +116,7 @@ Snapshots of RISC-V objdump at different optimization levels (-O1 and -Ofast) pr
 </details>
 <details>
 <summary><b>Task 3:</b> The task is to determine the instruction type for each of the provided instructions and provide their corresponding 32-bit instruction codes in the appropriate format.format</summary>
+
 # Understanding RISC-V and Its Instruction Formats
 
 ## What is RISC-V?
