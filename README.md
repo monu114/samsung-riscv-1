@@ -414,5 +414,4 @@ This repository contains a list of 15 unique RISC-V instructions extracted from 
     - **Format**: J-type
     - **Machine Code**: `0x090000ef`
     - **Instruction Binary**: `00000000000011010000000001101111`
-
 </details>
