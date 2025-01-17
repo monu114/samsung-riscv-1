@@ -315,4 +315,104 @@ J-type (Jump-type) instructions implement jump operations, often used for loops.
 ![j type](https://github.com/user-attachments/assets/5dbe1d45-4357-4816-bd3f-9b7f74c9d31a)
 
 ---
+
+# RISC-V 15 Unique Instructions and Their 32-Bit Machine Codes
+
+This repository contains a list of 15 unique RISC-V instructions extracted from the assembly code along with their corresponding 32-bit instruction codes. These instructions cover different instruction formats, such as **U-type**, **I-type**, **J-type**, **B-type**, and **R-type**.
+
+![ss](https://github.com/user-attachments/assets/d6bb46fa-4fb4-4bd7-9e02-eaa5399a9ece)
+
+
+## List of Instructions
+
+1. **`lui a0, 0x21` (Load Upper Immediate)**
+   - **Opcode**: `0110111` (LUI)
+   - **Format**: U-type
+   - **Machine Code**: `0x00021537`
+   - **Instruction Binary**: `00000000001000010001000000010011`
+
+2. **`li a3, 50` (Load Immediate)**
+   - **Opcode**: `0010011` (ADDI)
+   - **Format**: I-type
+   - **Machine Code**: `0x03200693`
+   - **Instruction Binary**: `00000011001000000000011010010011`
+
+3. **`li a2, 5` (Load Immediate)**
+   - **Opcode**: `0010011` (ADDI)
+   - **Format**: I-type
+   - **Machine Code**: `0x00500613`
+   - **Instruction Binary**: `00000000010100000000001110010011`
+
+4. **`li a1, 10` (Load Immediate)**
+   - **Opcode**: `0010011` (ADDI)
+   - **Format**: I-type
+   - **Machine Code**: `0x00a00593`
+   - **Instruction Binary**: `00000000101000000000001110010011`
+
+5. **`addi a0, a0, 352` (Add Immediate)**
+   - **Opcode**: `0010011` (ADDI)
+   - **Format**: I-type
+   - **Machine Code**: `0x16050513`
+   - **Instruction Binary**: `00000001011100010000000000010011`
+
+6. **`j 103f4` (Jump)**
+   - **Opcode**: `1101111` (JAL)
+   - **Format**: J-type
+   - **Machine Code**: `0x3300006f`
+   - **Instruction Binary**: `00000000011000001100000001101111`
+
+7. **`auipc a5, 0xffff0` (Add Upper Immediate to PC)**
+   - **Opcode**: `0010111` (AUIPC)
+   - **Format**: U-type
+   - **Machine Code**: `0xffff0797`
+   - **Instruction Binary**: `11111111111100000111000001111001`
+
+8. **`addi a5, a5, -200` (Add Immediate)**
+   - **Opcode**: `0010011` (ADDI)
+   - **Format**: I-type
+   - **Machine Code**: `0xf3878793`
+   - **Instruction Binary**: `11111111111100000011111000010011`
+
+9. **`beqz a5, 100e0` (Branch if Equal to Zero)**
+   - **Opcode**: `1100011` (BEQ)
+   - **Format**: B-type
+   - **Machine Code**: `0x00078863`
+   - **Instruction Binary**: `00000000000001011111000001100011`
+
+10. **`ret` (Return)**
+    - **Opcode**: `1101111` (JALR)
+    - **Format**: I-type
+    - **Machine Code**: `0x00008067`
+    - **Instruction Binary**: `00000000000000000000000000001111`
+
+11. **`jal ra, 102d4` (Jump and Link)**
+    - **Opcode**: `1101111` (JAL)
+    - **Format**: J-type
+    - **Machine Code**: `0x1d4000ef`
+    - **Instruction Binary**: `00000000001011010000000001101111`
+
+12. **`auipc a0, 0x0` (Add Upper Immediate to PC)**
+    - **Opcode**: `0010111` (AUIPC)
+    - **Format**: U-type
+    - **Machine Code**: `0x00000517`
+    - **Instruction Binary**: `00000000000000000000000000111001`
+
+13. **`addi a0, a0, 272` (Add Immediate)**
+    - **Opcode**: `0010011` (ADDI)
+    - **Format**: I-type
+    - **Machine Code**: `0x11050513`
+    - **Instruction Binary**: `00000001000001000000000000010011`
+
+14. **`j 1019c` (Jump)**
+    - **Opcode**: `1101111` (JAL)
+    - **Format**: J-type
+    - **Machine Code**: `0x0c00006f`
+    - **Instruction Binary**: `00000000000011010000000001101111`
+
+15. **`jal ra, 1019c` (Jump and Link)**
+    - **Opcode**: `1101111` (JAL)
+    - **Format**: J-type
+    - **Machine Code**: `0x090000ef`
+    - **Instruction Binary**: `00000000000011010000000001101111`
+
 </details>
