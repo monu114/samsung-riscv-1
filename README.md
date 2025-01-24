@@ -415,3 +415,79 @@ This repository contains a list of 15 unique RISC-V instructions extracted from 
     - **Machine Code**: `0x090000ef`
     - **Instruction Binary**: `00000000000011010000000001101111`
 </details>
+
+<details>
+<summary><b>Task 4:</b> Task 4: Conduct a functional simulation experiment using the RISC-V Core Verilog netlist and testbench, and analyze the resulting waveforms.simulator</summary> 
+<br>
+   
+# RISC-V Verilog Simulation
+
+This repository contains Verilog code to simulate a simple RISC-V design. Follow the instructions below to simulate the design and generate waveforms.
+
+---
+
+## Prerequisites
+
+Ensure the following tools are installed on your system:
+
+1. **Icarus Verilog** - For compiling and simulating the Verilog code.
+2. **GTKWave** - For viewing the waveform of the simulation.
+
+---
+
+## File Structure
+
+The repository includes the following files:
+
+- `iiitb_rv32i.v` - The main Verilog design file.
+- `iiitb_rv32i_tb.v` - The testbench file for the design.
+- `README.md` - This file.
+
+---
+
+## Simulation Steps
+
+Follow these steps to run the simulation and view the waveform:
+
+### 1. Clone the Repository
+
+Clone the repository to your local system:
+``` sh
+git clone https://github.com/monu112004/samsung-riscv.git
+cd samsung-riscv
+```
+### 2. Compile the Verilog Code   
+``` sh
+iverilog -o iiitb_rv32i_sim iiitb_rv32i.v iiitb_rv32i_tb.v
+```
+This will create an executable file named iiitb_rv32i_sim.
+### 3. Run the Simulation
+``` sh
+./iiitb_rv32i_sim
+```
+### 4. View the Waveform
+``` sh
+gtkwave iiitb_rv32i.vcd
+```
+![image](https://github.com/user-attachments/assets/6e3d4a0a-baf4-44a7-b638-383239e5ee1d)
+
+### Signal Analysis
+The waveform includes the following key signals:
+
+clk: The clock signal driving the design.
+
+NPC [31:0]: The next program counter value.
+
+WB_OUT [31:0]: The write-back output signal.
+
+RN: A register or control signal (usage depends on your design).
+
+#### Observations from the Waveform
+
+The clk signal toggles periodically to synchronize the design.
+
+The NPC value increments, indicating instruction execution.
+
+The WB_OUT signal changes at specific intervals, corresponding to write-back operations.
+
+The RN signal may represent a register value or an internal control flag.
