@@ -525,6 +525,8 @@ This project integrates the CH32V003 RISC-V processor to develop a 7-segment LED
 | g           | PD6    |
 | CA/CC       | VCC/GND |
 
+![ckt_diag](https://github.com/user-attachments/assets/6f18c52c-88c6-477e-ae14-f5aac9cff178)
+
 ## Code Uploaded on the Board
 
 ```c
