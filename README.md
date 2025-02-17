@@ -491,3 +491,106 @@ The NPC value increments, indicating instruction execution.
 The WB_OUT signal changes at specific intervals, corresponding to write-back operations.
 
 The RN signal may represent a register value or an internal control flag.
+</details>
+
+<details>
+<summary><b>Task 5:</b> Implement a 7-Segment Display Driver using the VSDSquadron Mini with the CH32V003 RISC-V Processor</summary> 
+<br>
+
+# 7-Segment Display Driver using VSDSquadron Mini
+
+## Overview
+This project integrates the CH32V003 RISC-V processor to develop a 7-segment LED display driver. The processor decodes numbers into their binary representation and controls the segments accordingly, automating the display process. The current setup manages a single 7-segment display, with plans to extend support for multiple displays.
+
+## Components Required
+- VSDSquadron Mini
+- 7-segment display (Common Anode/Cathode)
+- Breadboard
+- Power supply
+- Jumper wires
+- Resistors
+
+## Circuit Connection
+- Connect the Common Anode/Cathode pin to VCC or GND via a resistor, depending on the display type.
+- Wire the segment pins to the microcontroller as follows:
+
+| SEVEN SEGMENT | RISC-V |
+|--------------|--------|
+| a           | PD0    |
+| b           | PC0    |
+| c           | PD2    |
+| d           | PD3    |
+| e           | PD4    |
+| f           | PD5    |
+| g           | PD6    |
+| CA/CC       | VCC/GND |
+
+## Code Uploaded on the Board
+
+```c
+#include <ch32v00x.h>
+#include <debug.h>
+
+#define a GPIO_Pin_0
+#define b GPIO_Pin_1
+#define c GPIO_Pin_2
+#define d GPIO_Pin_3
+#define e GPIO_Pin_4
+#define f GPIO_Pin_5
+#define g GPIO_Pin_6
+
+int outar[] = {0, 0, 0, 0, 0, 0, 0};
+int out[] = {126, 48, 109, 121, 51, 91, 95, 112, 127, 123, 119, 31, 78, 61, 79, 71};
+
+void GPIO_Config(void);
+void assign(int);
+
+void GPIO_Config(void) {
+    GPIO_InitTypeDef GPIO_InitStructure = {0};
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD, ENABLE);
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
+    GPIO_InitStructure.GPIO_Pin = a;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_Init(GPIOD, &GPIO_InitStructure);
+    GPIO_InitStructure.GPIO_Pin = b;
+    GPIO_Init(GPIOC, &GPIO_InitStructure);
+    GPIO_InitStructure.GPIO_Pin = c;
+    GPIO_Init(GPIOD, &GPIO_InitStructure);
+    GPIO_InitStructure.GPIO_Pin = d;
+    GPIO_Init(GPIOD, &GPIO_InitStructure);
+    GPIO_InitStructure.GPIO_Pin = e;
+    GPIO_Init(GPIOD, &GPIO_InitStructure);
+    GPIO_InitStructure.GPIO_Pin = f;
+    GPIO_Init(GPIOD, &GPIO_InitStructure);
+    GPIO_InitStructure.GPIO_Pin = g;
+    GPIO_Init(GPIOD, &GPIO_InitStructure);
+}
+
+int main() {
+    Delay_Init();
+    GPIO_Config();
+    while (1) {
+        for (int i = 0; i < 16; i++) {
+            assign(i);
+            GPIO_WriteBit(GPIOD, a, outar[6] ? SET : RESET);
+            GPIO_WriteBit(GPIOC, b, outar[5] ? SET : RESET);
+            GPIO_WriteBit(GPIOD, c, outar[4] ? SET : RESET);
+            GPIO_WriteBit(GPIOD, d, outar[3] ? SET : RESET);
+            GPIO_WriteBit(GPIOD, e, outar[2] ? SET : RESET);
+            GPIO_WriteBit(GPIOD, f, outar[1] ? SET : RESET);
+            GPIO_WriteBit(GPIOD, g, outar[0] ? SET : RESET);
+            Delay_Ms(5000);
+        }
+    }
+}
+
+void assign(int num) {
+    int mask = 1;
+    for (int i = 0; i < 7; i++) {
+        outar[i] = (mask & out[num]) ? 1 : 0;
+        mask = mask << 1;
+    }
+}
+```
+</details>
