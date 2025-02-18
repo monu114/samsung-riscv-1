@@ -596,3 +596,87 @@ void assign(int num) {
 }
 ```
 </details>
+
+<details>
+<summary> <b>Task 6:</b> Motion-Activated Lighting System using the VSDSquadron Mini with RISC-V</summary> 
+<br>
+
+## Project Implementation  
+
+### Steps for Deployment:  
+1. **Hardware Configuration:**  
+   - Connect the **IR sensor** to the appropriate GPIO pins.  
+   - Attach an **LED** for motion indication.  
+   - Utilize a **breadboard** to arrange the circuit neatly.  
+
+2. **Firmware Development:**  
+   - Develop **C-based firmware** to monitor IR sensor input.  
+   - Set GPIO pins for input (sensor) and output (LED).  
+   - Program logic to **flash the LED thrice** upon motion detection.  
+   - Keep the LED **inactive** while movement continues.  
+   - Turn the LED **on** after a delay when no movement is sensed.  
+
+3. **Compiling & Flashing:**  
+   - Use a **RISC-V toolchain** to compile the firmware.  
+   - Upload the program onto the **VSDSquadron Mini** board.  
+
+4. **Testing & Troubleshooting:**  
+   - Validate performance under various lighting conditions.  
+   - Adjust IR sensor sensitivity if required.  
+
+### Expected Functionality:  
+- When movement is detected, the LED **blinks three times** before turning off.  
+- If no motion is detected, the LED **remains on**.  
+
+This setup ensures **efficient lighting automation**, **hands-free operation**, and **enhanced security** for diverse applications.  
+
+---
+
+## Code Implementation  
+```c
+#include <ch32v00x.h>
+#include <debug.h>
+
+void GPIO_Config(void)
+{
+    GPIO_InitTypeDef GPIO_InitStructure = {0};
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD, ENABLE);
+    
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
+    GPIO_Init(GPIOD, &GPIO_InitStructure);
+    
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_Init(GPIOD, &GPIO_InitStructure);
+}
+
+int main(void)
+{
+    uint8_t IR = 0;
+    uint8_t set = 1;
+    uint8_t reset = 0;
+    uint8_t a = 0;
+    
+    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+    SystemCoreClockUpdate();
+    Delay_Init();
+    GPIO_Config();
+    
+    while (1)
+    {
+        IR = GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_4);
+        if (IR == 1)
+        {
+            for (a = 0; a < 3; a++)
+            {
+                GPIO_WriteBit(GPIOD, GPIO_Pin_6, set);
+                Delay_Ms(200);
+                GPIO_WriteBit(GPIOD, GPIO_Pin_6, reset);
+                Delay_Ms(100);
+            }
+        }
+    }
+}
+```
